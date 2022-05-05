@@ -27,7 +27,6 @@ export default class Bishop extends Piece {
         }
 
 
-        console.log(array);
         return array;
     }
 }
