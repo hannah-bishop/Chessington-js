@@ -9,15 +9,80 @@ export default class Rook extends Piece {
         let location = board.findPiece(this)
         let array = []
 
-        for (let i = 0; i <= 7; i++) {
-            array.push(Square.at(location.row, i))
+        // for (let i=location.col; i<=7; i++){
+        //     let blocking = board.getPiece(Square.at(location.row, i))
+        //     if (!blocking){
+        //         array.push(Square.at(location.row, i))
+        //     } else {
+        //         break
+        //     }
+        // }
+
+        // for (let i=location.col; i>=0; i--){
+        //     let blocking = board.getPiece(Square.at(location.row, i))
+        //     if (!blocking){
+        //         array.push(Square.at(location.row, i))
+        //     } else {
+        //         break
+        //     }
+        // }
+
+        // for (let i=location.row; i<=7; i++){
+        //     let blocking = board.getPiece(Square.at(i, location.col))
+        //     if (!blocking){
+        //         array.push(Square.at(i, location.col))
+        //     } else {
+        //         console.log('breaking')
+        //         break
+        //     }
+        // }
+
+        // for (let i=location.row; i>=0; i--){
+        //     let blocking = board.getPiece(Square.at(i, location.col))
+        //     if (!blocking){
+        //         array.push(Square.at(i, location.col))
+        //     } else {
+        //         break
+        //     }
+        // }
+
+
+        for (let i = location.col+1; i <= 7; i++) {
+            let blocking = board.getPiece(Square.at(location.row, i))
+            if (!blocking){
+                array.push(Square.at(location.row, i))
+            } else {
+                break
+            }
         }
 
-        for (let i = 0; i <= 7; i++) {
-            array.push(Square.at(i, location.col))
+        for (let i = location.col-1; i >= 0; i--) {
+            let blocking = board.getPiece(Square.at(location.row, i))
+            if (!blocking){
+                array.push(Square.at(location.row, i))
+            } else {
+                break
+            }
         }
 
-        let filteredArray = array.filter(square => square.row !== location.row || square.col !== location.col);
-        return filteredArray;
+        for (let i = location.row+1; i <= 7; i++) {
+            let blocking = board.getPiece(Square.at(i, location.col))
+            if (!blocking){
+                array.push(Square.at(i, location.col))
+            } else {
+                break
+            }
+        }
+
+        for (let i = location.row-1; i >= 0; i--) {
+            let blocking = board.getPiece(Square.at(i, location.col))
+            if (!blocking){
+                array.push(Square.at(i, location.col))
+            } else {
+                break
+            }
+        }
+
+        return array;
     }
 }
