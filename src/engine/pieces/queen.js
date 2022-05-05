@@ -81,7 +81,6 @@ export default class Queen extends Piece {
             }
         }
 
-        //let filteredArray = array.filter(square => square.row !== location.row || square.col !== location.col);
         return array;
     }
 }
